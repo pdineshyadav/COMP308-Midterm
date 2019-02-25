@@ -1,3 +1,7 @@
+/* File Name :- routes/books.js
+    Student Name :- Dinesh Palle
+    Student ID :- 300705307
+    Web App Name :- Favourite Books */
 // modules required for routing
 let express = require('express');
 let router = express.Router();
@@ -29,10 +33,12 @@ router.get('/details', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
+      //Finds for errors
       book.find( (err, books) => {
         if (err) {
           return console.error(err);
         }
+        // If no errors it renders
         else {
           res.render('books/details', {
             title: 'Books',
@@ -56,7 +62,7 @@ router.post('/details', (req, res, next) => {
       "Author": req.body.author,
       "Genre": req.body.genre
   });
-
+  //Creates new Book
   book.create(newBook, (err, book) => {
       if(err) {
           console.log(err);
@@ -76,12 +82,14 @@ router.get('/details/:id', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
+    //Finds the book by ID
     let id = req.params.id;
     book.findById(id, (err, bookObject) => {
       if (err) {
         console.log(err);
         res.end(err);
       }
+      // If no errors, It renders the book
       else {
         res.render('books/details', {
           title: 'Edit Book',
@@ -106,6 +114,7 @@ router.post('/details/:id', (req, res, next) => {
       "Author": req.body.author,
       "Genre": req.body.genre
   });
+  // Updates the book using it's ID
   book.update({_id: id}, updatedBook, (err) => {
     if(err) {
         console.log(err);
@@ -125,6 +134,7 @@ router.get('/delete/:id', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
+    // Deletes the book using it's ID
     let id = req.params.id;
     book.remove({_id: id}, (err) => {
       if(err) {

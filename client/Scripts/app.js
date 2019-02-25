@@ -1,4 +1,8 @@
 /* custom JS goes here */
+/* File Name :- app.js
+    Student Name :- Dinesh Palle
+    Student ID :- 300705307
+    Web App Name :- Favourite Books */
 
 /* pagination code from http://www.bootply.com/lxa0FF9yhw */
 $.fn.pageMe = function(opts){
@@ -9,12 +13,14 @@ $.fn.pageMe = function(opts){
             hidePageNumbers: false
         },
         settings = $.extend(defaults, opts);
-
+    
+        //Variables
     var listElement = $this;
     var perPage = settings.perPage;
     var children = listElement.children();
     var pager = $('.pager');
-
+    
+    // If Statements
     if (typeof settings.childSelector!="undefined") {
         children = listElement.find(settings.childSelector);
     }
@@ -66,6 +72,7 @@ $.fn.pageMe = function(opts){
         return false;
     });
 
+    // Functions
     function previous(){
         var goToPage = parseInt(pager.data("curr")) - 1;
         goTo(goToPage);
