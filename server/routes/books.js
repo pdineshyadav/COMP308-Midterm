@@ -63,8 +63,8 @@ router.post('/details', (req, res, next) => {
           res.end(err);
       }
       else {
-          // refresh the contact list
-          res.redirect('/details');
+          // refresh the books list
+          res.redirect('/books');
       }
   });
 
@@ -76,6 +76,7 @@ router.get('/:id', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
+
 });
 
 // POST - process the information passed from the details form and update the document
